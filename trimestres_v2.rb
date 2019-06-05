@@ -15,11 +15,9 @@ Diciembre: 21000
 
 trimestres = ['Q1','Q2','Q3','Q4']
 ventas_trimestre_values = []
-ventas.each_slice(3) do |ventas_trimestre|
-	sum = 0
-	ventas_trimestre.each do |ventas_mes|
-		sum += ventas_mes[1]
-	end
-	ventas_trimestre_values << sum
+
+ventas.each_slice(3) do |ventas_trimestre_array|
+	ventas_trimestre_values << ventas_trimestre_array.to_h.values.sum
 end
+
 print trimestres.zip(ventas_trimestre_values).to_h
